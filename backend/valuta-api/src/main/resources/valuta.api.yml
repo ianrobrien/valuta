@@ -1,0 +1,95 @@
+openapi: '3.0.3'
+info:
+  description: 'Currency conversion service using DNB Open Banking Currencies API'
+  version: 1.0.0
+  title: valuta-api
+  contact:
+    name: Ian Robert O'Brien
+servers:
+  - url: http://localhost:8080/api
+paths:
+  /valuta/{baseCurrency}/convert/{quoteCurrency}:
+    get:
+      summary: 'Get the currency rate for the specified base and quote'
+      operationId: getCurrencyRate
+      parameters:
+        - name: baseCurrency
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: quoteCurrency
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: amount
+          in: query
+          required: true
+          schema:
+            type: string
+        - name: x-api-key
+          in: header
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/definitions/CurrencyRateTO'
+  /valuta/convert/{quoteCurrency}:
+    get:
+      summary: 'Get a list of currency rates for the specified base'
+      operationId: getCurrencyRateList
+      parameters:
+        - name: quoteCurrency
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: x-api-key
+          in: header
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/definitions/CurrencyRateListTO'
+components:
+  schemas:
+    CurrencyRateTO:
+      type: object
+      properties:
+        baseCurrency:
+          type: string
+        quoteCurrency:
+          type: string
+        baseAmount:
+          type: string
+        updatedDate:
+          type: string
+        buyRateTransfer:
+          type: string
+        sellRateTransfer:
+          type: string
+        midRate:
+          type: string
+        changeInMidRate:
+          type: string
+        previousMidRate:
+          type: string
+        buyRateCash:
+          type: string
+        sellRateCash:
+          type: string
+    CurrencyRateListTO:
+      type: array
+      items:
+        $ref: '#/definitions/CurrencyRateTO'

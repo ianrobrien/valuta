@@ -1,0 +1,7 @@
+spring:
+  config:
+    activate:
+      on-profile: prod
+dob:
+  currencies:
+    url: "http://developer-api.dnb.no/currencies"

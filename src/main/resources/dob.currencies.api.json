@@ -1,0 +1,348 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.6.0",
+    "title": "Currencies",
+    "contact": {
+      "name": "DNB Open Banking",
+      "url": "https://developer.dnb.no",
+      "email": "developer@dnb.no"
+    },
+    "license": {
+      "name": "See terms of use."
+    }
+  },
+  "tags": [
+    {
+      "name": "Currencies",
+      "description": "Currency Controller"
+    }
+  ],
+  "paths": {
+    "/v1/convert/{quoteCurrency}": {
+      "get": {
+        "tags": [
+          "Currencies"
+        ],
+        "summary": "Get list of currency rates.",
+        "description": "Returns a list of currency rates. against the specified quote currency.\nEx: 1 EUR is exchangeable for 9.5 NOK. EUR is the base currency, NOK is the quote currency.\n\n**NOTE**: Rates are updated approximately 09:00 on weekdays.",
+        "operationId": "getCurrencyRatesListUsingGET",
+        "parameters": [
+          {
+            "name": "quoteCurrency",
+            "in": "path",
+            "description": "ISO 4217: alpha 3-letter string e.g ```NOK```.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "The API key from your app page in DNB Developer.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully fetched",
+            "content": {
+              "application/json;charset=UTF-8": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CurrencyRateResponse"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json;charset=UTF-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json;charset=UTF-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json;charset=UTF-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/{baseCurrency}/convert/{quoteCurrency}": {
+      "get": {
+        "tags": [
+          "Currencies"
+        ],
+        "summary": "Get currency rate",
+        "description": "Returns the conversion rate for the `baseCurrency` against the `quoteCurrency`.\nEx: 1 EUR is exchangeable for 9.5 NOK. EUR is the base currency, NOK is the quote currency.\n\n**NOTE**: Rates are updated approximately 09:00 on weekdays.",
+        "operationId": "getCurrencyRateUsingGET",
+        "parameters": [
+          {
+            "name": "baseCurrency",
+            "in": "path",
+            "description": "ISO 4217: alpha 3-letter e.g ```EUR```.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "quoteCurrency",
+            "in": "path",
+            "description": "ISO 4217: alpha 3-letter e.g ```NOK```.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "amount",
+            "in": "query",
+            "description": "Optional parameter. Amount for the `baseCurrency`.",
+            "required": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "x-api-key",
+            "in": "header",
+            "description": "The API key from your app page in DNB Developer.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successfully fetched",
+            "content": {
+              "application/json;charset=UTF-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/CurrencyRateResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "application/json;charset=UTF-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "application/json;charset=UTF-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal server error",
+            "content": {
+              "application/json;charset=UTF-8": {
+                "schema": {
+                  "$ref": "#/components/schemas/ErrorResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "servers": [
+    {
+      "url": "//developer-api-testmode.dnb.no/currencies"
+    }
+  ],
+  "components": {
+    "schemas": {
+      "CurrencyRateResponse": {
+        "type": "object",
+        "required": [
+          "amount",
+          "baseCurrency",
+          "buyRateTransfer",
+          "quoteCurrency"
+        ],
+        "properties": {
+          "baseCurrency": {
+            "type": "string",
+            "example": "EUR",
+            "description": "ISO 4217: alpha 3-letter: https://www.iso.org/iso-4217-currency-codes.html",
+            "minLength": 3,
+            "maxLength": 3
+          },
+          "quoteCurrency": {
+            "type": "string",
+            "example": "NOK",
+            "description": "ISO 4217: alpha 3-letter: https://www.iso.org/iso-4217-currency-codes.html",
+            "minLength": 3,
+            "maxLength": 3
+          },
+          "country": {
+            "type": "string",
+            "example": "EU",
+            "description": "Country corresponding to the `baseCurrency`."
+          },
+          "updatedDate": {
+            "type": "string",
+            "example": "2019-04-29 09:00:00.0",
+            "description": "Date when the rate was last refreshed."
+          },
+          "amount": {
+            "type": "number",
+            "example": 1,
+            "description": "The amount for the `baseCurrency`."
+          },
+          "buyRateTransfer": {
+            "type": "number",
+            "example": 8.7141,
+            "description": "Rate the customer gets for buying the `baseCurrency` (transfer)."
+          },
+          "sellRateTransfer": {
+            "type": "number",
+            "example": 8.6491,
+            "description": "Rate the customer gets for selling the `baseCurrency` (transfer)."
+          },
+          "midRate": {
+            "type": "number",
+            "example": 8.6816,
+            "description": "Middle rate for the exchange from `baseCurrency` to `quoteCurrency` (transfer)."
+          },
+          "changeInMidRate": {
+            "type": "number",
+            "example": 0.0195,
+            "description": "Change in middle rate. (transfer)"
+          },
+          "previousMidRate": {
+            "type": "number",
+            "example": 8.6621,
+            "description": "Middle rate for the day before `updatedDate` (transfer)."
+          },
+          "buyRateCash": {
+            "type": "number",
+            "example": 9.0508,
+            "description": "Rate the customer gets for buying the `baseCurrency` (cash)."
+          },
+          "sellRateCash": {
+            "type": "number",
+            "example": 8.3224,
+            "description": "Rate the customer gets for selling the `baseCurrency` (cash)."
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "required": [
+          "code",
+          "detail",
+          "title"
+        ],
+        "properties": {
+          "code": {
+            "type": "string",
+            "description": "Six digit error code referencing a specific error for an API."
+          },
+          "path": {
+            "type": "string",
+            "description": "Requested path that caused the error."
+          },
+          "source": {
+            "$ref": "#/components/schemas/Source"
+          },
+          "title": {
+            "type": "string",
+            "description": "Brief description of the error."
+          },
+          "detail": {
+            "type": "string",
+            "description": "Details about the cause of this error (or errors)."
+          },
+          "doc": {
+            "type": "string",
+            "description": "URI to developer documentation for this error."
+          }
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "errors": {
+            "type": "array",
+            "description": "List of errors.",
+            "items": {
+              "$ref": "#/components/schemas/Error"
+            }
+          }
+        }
+      },
+      "Source": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "description": "Source type.",
+            "enum": [
+              "HEADER",
+              "QUERY_PARAMETER",
+              "PATH_VARIABLE",
+              "BODY_CONTENT"
+            ]
+          },
+          "name": {
+            "type": "string",
+            "description": "Source name."
+          }
+        }
+      }
+    }
+  }
+}
