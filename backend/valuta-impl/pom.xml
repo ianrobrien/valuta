@@ -13,7 +13,7 @@
 
   <properties>
     <mapstruct-processor.version>1.5.3.Final</mapstruct-processor.version>
-    <lombok.version>1.18.20</lombok.version>
+    <lombok.version>1.18.24</lombok.version>
     <openapi-generator.version>5.1.0</openapi-generator.version>
     <spring-boot-starter.version>2.7.5</spring-boot-starter.version>
     <jackson-databind-nullable.version>0.2.4</jackson-databind-nullable.version>
