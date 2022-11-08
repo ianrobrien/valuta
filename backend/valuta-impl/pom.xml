@@ -14,7 +14,7 @@
   <properties>
     <mapstruct-processor.version>1.5.3.Final</mapstruct-processor.version>
     <lombok.version>1.18.24</lombok.version>
-    <openapi-generator.version>5.1.0</openapi-generator.version>
+    <openapi-generator.version>6.2.1</openapi-generator.version>
     <spring-boot-starter.version>2.7.5</spring-boot-starter.version>
     <jackson-databind-nullable.version>0.2.4</jackson-databind-nullable.version>
     <springfox-swagger2.version>3.0.0</springfox-swagger2.version>
@@ -111,6 +111,11 @@
       <groupId>io.springfox</groupId>
       <artifactId>springfox-swagger2</artifactId>
       <version>${springfox-swagger2.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>javax.ws.rs</groupId>
+      <artifactId>javax.ws.rs-api</artifactId>
+      <version>${javax.ws.rs-api.version}</version>
     </dependency>
 
     <!--Test-->
