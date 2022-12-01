@@ -24,6 +24,7 @@
     <gson-fire.version>1.8.5</gson-fire.version>
     <okhttp3.version>4.10.0</okhttp3.version>
     <gson.version>2.10</gson.version>
+    <servlet-api.version>2.5</servlet-api.version>
   </properties>
 
   <dependencies>
@@ -116,6 +117,12 @@
       <groupId>javax.ws.rs</groupId>
       <artifactId>javax.ws.rs-api</artifactId>
       <version>${javax.ws.rs-api.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>servlet-api</artifactId>
+      <version>${servlet-api.version}</version>
+      <scope>provided</scope>
     </dependency>
 
     <!--Test-->
