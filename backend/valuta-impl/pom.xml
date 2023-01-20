@@ -15,7 +15,7 @@
     <mapstruct-processor.version>1.5.3.Final</mapstruct-processor.version>
     <lombok.version>1.18.24</lombok.version>
     <openapi-generator.version>6.2.1</openapi-generator.version>
-    <spring-boot-starter.version>3.0.1</spring-boot-starter.version>
+    <spring-boot-starter.version>3.0.2</spring-boot-starter.version>
     <jackson-databind-nullable.version>0.2.4</jackson-databind-nullable.version>
     <springfox-swagger2.version>3.0.0</springfox-swagger2.version>
     <junit.version>4.13.2</junit.version>
