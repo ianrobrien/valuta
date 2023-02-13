@@ -13,5 +13,14 @@ jobs:
           distribution: 'adopt'
           java-version: '19'
           cache: 'maven'
+      - name: Cache local Maven repository
+        uses: actions/cache@v3
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+      - name: Maven Dependency Tree Dependency Submission
+        uses: advanced-security/maven-dependency-submission-action@v2.0.1          
       - name: Build with Maven
         run: mvn -B -Dspring.profiles.active=dev package --file pom.xml
