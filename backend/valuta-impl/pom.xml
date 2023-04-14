@@ -9,6 +9,7 @@
   </parent>
   <properties>
     <spring.version>3.0.5</spring.version>
+    <mapstruct.version>1.5.3.Final</mapstruct.version>
   </properties>
   <modelVersion>4.0.0</modelVersion>
 
@@ -25,12 +26,12 @@
     <dependency>
       <groupId>org.mapstruct</groupId>
       <artifactId>mapstruct</artifactId>
-      <version>1.5.3.Final</version>
+      <version>${mapstruct.version}</version>
     </dependency>
     <dependency>
       <groupId>org.mapstruct</groupId>
       <artifactId>mapstruct-processor</artifactId>
-      <version>1.5.3.Final</version>
+      <version>${mapstruct.version}</version>
     </dependency>
 
     <dependency>
