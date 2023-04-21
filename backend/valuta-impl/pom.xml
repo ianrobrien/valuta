@@ -8,7 +8,7 @@
     <version>1.0.0-SNAPSHOT</version>
   </parent>
   <properties>
-    <spring.version>3.0.5</spring.version>
+    <spring.version>3.0.6</spring.version>
     <mapstruct.version>1.5.4.Final</mapstruct.version>
   </properties>
   <modelVersion>4.0.0</modelVersion>
