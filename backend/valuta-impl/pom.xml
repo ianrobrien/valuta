@@ -9,7 +9,7 @@
   </parent>
   <properties>
     <spring.version>3.0.6</spring.version>
-    <mapstruct.version>1.5.4.Final</mapstruct.version>
+    <mapstruct.version>1.5.5.Final</mapstruct.version>
     <okhttp.version>4.11.0</okhttp.version>
   </properties>
   <modelVersion>4.0.0</modelVersion>
