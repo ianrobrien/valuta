@@ -11,6 +11,9 @@
     <spring.version>3.0.6</spring.version>
     <mapstruct.version>1.5.4.Final</mapstruct.version>
     <okhttp.version>4.11.0</okhttp.version>
+    <junit-jupiter.version>5.9.2</junit-jupiter.version>
+    <openapi-generator-maven-plugin.version>6.5.0</openapi-generator-maven-plugin.version>
+    <lombok.version>1.18.26</lombok.version>
   </properties>
   <modelVersion>4.0.0</modelVersion>
 
@@ -39,13 +42,13 @@
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
       <scope>provided</scope>
-      <version>1.18.26</version>
+      <version>${lombok.version}</version>
     </dependency>
 
     <dependency>
       <groupId>org.openapitools</groupId>
       <artifactId>openapi-generator-maven-plugin</artifactId>
-      <version>6.5.0</version>
+      <version>${openapi-generator-maven-plugin.version}</version>
     </dependency>
 
     <!--Client API-->
@@ -135,13 +138,13 @@
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-engine</artifactId>
-      <version>5.9.2</version>
+      <version>${junit-jupiter.version}</version>
       <scope>compile</scope>
     </dependency>
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-api</artifactId>
-      <version>5.9.2</version>
+      <version>${junit-jupiter.version}</version>
       <scope>compile</scope>
     </dependency>
   </dependencies>
@@ -151,7 +154,7 @@
       <plugin>
         <groupId>org.openapitools</groupId>
         <artifactId>openapi-generator-maven-plugin</artifactId>
-        <version>6.5.0</version>
+        <version>${openapi-generator-maven-plugin.version}</version>
         <executions>
           <execution>
             <id>extern</id>
