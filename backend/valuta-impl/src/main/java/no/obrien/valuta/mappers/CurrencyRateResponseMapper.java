@@ -4,8 +4,9 @@ import no.dnb.openbanking.models.CurrencyRateResponse;
 import no.obrien.valuta.models.CurrencyRateTO;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.MappingConstants.ComponentModel;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = ComponentModel.SPRING)
 public interface CurrencyRateResponseMapper {
 
   @Mapping(target = "baseCurrency", source = "baseCurrency")
