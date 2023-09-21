@@ -12,7 +12,7 @@
     <okhttp.version>4.11.0</okhttp.version>
     <junit-jupiter.version>5.10.0</junit-jupiter.version>
     <openapi-generator-maven-plugin.version>7.0.0</openapi-generator-maven-plugin.version>
-    <lombok.version>1.18.28</lombok.version>
+    <lombok.version>1.18.30</lombok.version>
   </properties>
   <modelVersion>4.0.0</modelVersion>
 
