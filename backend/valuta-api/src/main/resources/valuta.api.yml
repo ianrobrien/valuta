@@ -39,7 +39,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/definitions/CurrencyRateTO'
+                $ref: '#/components/schemas/CurrencyRateTO'
   /valuta/convert/{quoteCurrency}:
     get:
       summary: 'Get a list of currency rates for the specified base'
@@ -61,7 +61,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: '#/definitions/CurrencyRateListTO'
+                $ref: '#/components/schemas/CurrencyRateListTO'
 components:
   schemas:
     CurrencyRateTO:
@@ -92,4 +92,4 @@ components:
     CurrencyRateListTO:
       type: array
       items:
-        $ref: '#/definitions/CurrencyRateTO'
+        $ref: '#/components/schemas/CurrencyRateTO'
