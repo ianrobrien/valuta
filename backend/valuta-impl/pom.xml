@@ -13,7 +13,7 @@
     <junit-jupiter.version>5.10.2</junit-jupiter.version>
     <openapi-generator-maven-plugin.version>7.6.0</openapi-generator-maven-plugin.version>
     <lombok.version>1.18.32</lombok.version>
-    <spring.version>6.1.7</spring.version>
+    <spring.version>6.1.8</spring.version>
     <spring-boot.version>3.2.5</spring-boot.version>
   </properties>
   <modelVersion>4.0.0</modelVersion>
